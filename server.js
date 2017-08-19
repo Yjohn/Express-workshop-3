@@ -7,6 +7,19 @@ const fs = require('fs');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(middleware);
+function bodymiddleware(req,res, next){
+    req.body={}
+    next()
+}
+
+app.use(middleware);
+app.use(function(req,res, next){
+    console.log(req.body);
+})
 // The extensions 'html' allows us to serve file without adding .html at the end 
 // i.e /my-cv will server /my-cv.html
 app.use(express.static("public", {'extensions': ['html']}));
@@ -20,7 +33,7 @@ app.get('/', function (req, res) {
         const postsJson = JSON.parse(fileData);
         // send the json to the Template to render
         res.render('index', {
-          title: "Michael's profile",
+          title: "Yohannes's profile",
           subheading: "A modern Website built in Node with Handlebars",
           posts: postsJson
         });
