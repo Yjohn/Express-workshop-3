@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/CodeYourFuture/express-workshop#readme",
   "dependencies": {
+    "aws-sdk": "^2.100.0",
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0"
   },
